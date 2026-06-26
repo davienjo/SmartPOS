@@ -1,0 +1,17 @@
+.protected-layout{
+  display: flex;
+}
+
+.protected-content{
+  flex:1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--sidebar-width);
+}
+
+.protected-main{
+  padding:24px;
+  flex:1;
+  background:#f0f2f5; 
+}

@@ -1,0 +1,98 @@
+/* The whole login page — dark background */
+.login-page {
+  min-height: 100vh;
+  background: #1e293b;
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+}
+
+/* The white card in the middle */
+.login-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;       
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo section at top of card */
+.login-logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* The cart emoji */
+.login-logo h1 {
+  font-size: 32px;
+}
+
+/* SmartPOS title */
+.login-logo h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e293b;
+  margin-top: 8px;
+}
+
+/* Subtitle */
+.login-logo p {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* Red error box */
+.login-error {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Each form field wrapper */
+.login-field {
+  margin-bottom: 16px;
+}
+
+/* Last form field has more space below */
+.login-field:last-of-type {
+  margin-bottom: 24px;
+}
+
+/* Labels above inputs */
+.login-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Sign in button */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Hover effect on button */
+.login-btn:hover {
+  background: #1d4ed8;
+}
+
+/* When loading — button is lighter blue */
+.login-btn:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}

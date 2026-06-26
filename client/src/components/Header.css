@@ -1,0 +1,44 @@
+.header {
+  background: #fff;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.header-welcome {
+  font-size: 18px;
+  color: #333;
+  font-weight:500;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.header-name {
+  font-size: 14px;
+  font-weight: 600;
+  color:333333;
+}
+
+.header-role {
+  font-size: 12px;
+  color: #64748b;
+}

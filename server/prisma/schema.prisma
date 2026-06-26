@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("cashier")
+  createdAt DateTime @default(now())
+  sales     Sale[]
+}
+
+model Supplier {
+  id             Int             @id @default(autoincrement())
+  name           String
+  phone          String?
+  email          String?
+  address        String?
+  createdAt      DateTime        @default(now())
+  purchases      Purchase[]
+  returnOutwards ReturnOutward[]
+}
+
+model Product {
+  id              Int                 @id @default(autoincrement())
+  name            String
+  barcode         String              @default("")
+  price           Float
+  costPrice       Float               @default(0)
+  stock           Int                 @default(0)
+  category        String
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  saleItems       SaleItem[]
+  purchaseItems   PurchaseItem[]
+  returnInItems   ReturnInwardItem[]
+  returnOutItems  ReturnOutwardItem[]
+  stockAdjustments StockAdjustment[]
+}
+
+model Sale {
+  id            Int            @id @default(autoincrement())
+  total         Float
+  paymentMethod String         @default("cash")
+  cashAmount    Float          @default(0)
+  mpesaAmount   Float          @default(0)
+  status        String         @default("completed")
+  voidReason    String?
+  voidedAt      DateTime?
+  createdAt     DateTime       @default(now())
+  userId        Int
+  user          User           @relation(fields: [userId], references: [id])
+  items         SaleItem[]
+  returnInwards ReturnInward[]
+}
+
+model SaleItem {
+  id            Int     @id @default(autoincrement())
+  quantity      Int
+  price         Float
+  originalPrice Float   @default(0)
+  costPrice     Float   @default(0)
+  productId     Int
+  saleId        Int
+  product       Product @relation(fields: [productId], references: [id])
+  sale          Sale    @relation(fields: [saleId], references: [id])
+}
+
+model Purchase {
+  id              Int               @id @default(autoincrement())
+  referenceNo     String?
+  totalAmount     Float
+  carriageInwards Float             @default(0)
+  amountPaid      Float             @default(0)
+  paymentStatus   String            @default("unpaid")
+  notes           String?
+  createdAt       DateTime          @default(now())
+  supplierId      Int
+  supplier        Supplier          @relation(fields: [supplierId], references: [id])
+  items           PurchaseItem[]
+  returnOutwards  ReturnOutward[]
+  payments        SupplierPayment[]
+}
+
+model SupplierPayment {
+  id         Int      @id @default(autoincrement())
+  amount     Float
+  method     String   @default("cash")
+  notes      String?
+  createdAt  DateTime @default(now())
+  purchaseId Int
+  purchase   Purchase @relation(fields: [purchaseId], references: [id])
+}
+model PurchaseItem {
+  id         Int      @id @default(autoincrement())
+  quantity   Int
+  costPrice  Float
+  productId  Int
+  purchaseId Int
+  product    Product  @relation(fields: [productId], references: [id])
+  purchase   Purchase @relation(fields: [purchaseId], references: [id])
+}
+
+model ReturnInward {
+  id          Int                @id @default(autoincrement())
+  reason      String
+  totalAmount Float
+  createdAt   DateTime           @default(now())
+  saleId      Int?
+  sale        Sale?              @relation(fields: [saleId], references: [id])
+  items       ReturnInwardItem[]
+}
+
+model ReturnInwardItem {
+  id             Int          @id @default(autoincrement())
+  quantity       Int
+  price          Float
+  productId      Int
+  returnInwardId Int
+  product        Product      @relation(fields: [productId], references: [id])
+  returnInward   ReturnInward @relation(fields: [returnInwardId], references: [id])
+}
+
+model ReturnOutward {
+  id          Int                 @id @default(autoincrement())
+  reason      String
+  totalAmount Float
+  createdAt   DateTime            @default(now())
+  supplierId  Int
+  purchaseId  Int?
+  supplier    Supplier            @relation(fields: [supplierId], references: [id])
+  purchase    Purchase?           @relation(fields: [purchaseId], references: [id])
+  items       ReturnOutwardItem[]
+}
+
+model ReturnOutwardItem {
+  id              Int           @id @default(autoincrement())
+  quantity        Int
+  costPrice       Float
+  productId       Int
+  returnOutwardId Int
+  product         Product       @relation(fields: [productId], references: [id])
+  returnOutward   ReturnOutward @relation(fields: [returnOutwardId], references: [id])
+}
+
+model Expense {
+  id          Int      @id @default(autoincrement())
+  title       String
+  amount      Float
+  category    String   @default("General")
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model StockAdjustment {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+  change    Int
+  reason    String
+  createdAt DateTime @default(now())
+}

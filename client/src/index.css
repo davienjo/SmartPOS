@@ -1,0 +1,197 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #64748b;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --background: #f0f2f5;
+  --white: #ffffff;
+  --sidebar-width: 250px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+}
+
+/* ─────────────────────────────────────
+   MEDIA QUERIES
+   Makes app work on different screens
+───────────────────────────────────── */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .sales-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .purchase-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .expense-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .pos-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .suppliers-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr !important;
+  }
+
+  .trading-columns {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Mobile (below 768px) */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none !important;
+  }
+
+  .protected-content {
+    margin-left: 0 !important;
+  }
+
+  .stats-grid,
+  .sales-stats,
+  .purchase-stats,
+  .expense-stats,
+  .returns-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pos {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+
+  .pos-left {
+    flex: none !important;
+  }
+
+  .pos-cart {
+    flex: none !important;
+    min-width: unset !important;
+  }
+
+  .pos-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .products-table-card,
+  .sales-table-card,
+  .expenses-table-card,
+  .purchases-table-card,
+  .returns-table-card {
+    overflow-x: auto !important;
+  }
+
+  .suppliers-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .modal {
+    margin: 16px !important;
+    max-height: 95vh !important;
+  }
+
+  .header-welcome {
+    font-size: 14px !important;
+  }
+
+  .cashier-header {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    padding: 12px !important;
+    gap: 8px !important;
+  }
+
+  .cashier-nav {
+    order: 3 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .breakdown-label {
+    width: 100px !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pos-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .protected-main {
+    padding: 12px !important;
+  }
+
+  .dashboard-title,
+  .products-title,
+  .expenses-title,
+  .sales-title,
+  .purchases-title {
+    font-size: 18px !important;
+  }
+
+  .stat-value,
+  .sales-stat-value,
+  .purchase-stat-value {
+    font-size: 18px !important;
+  }
+}

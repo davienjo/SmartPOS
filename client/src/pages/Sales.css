@@ -1,0 +1,803 @@
+/* ─────────────────────────────────────
+   SALES HISTORY PAGE
+───────────────────────────────────── */
+
+.sales-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── TOP BAR ── */
+.sales-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* ── STAT CARDS ── */
+.sales-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.sales-stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.sales-stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.sales-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales-stat-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.sales-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Different colors for each card */
+.sales-stat-icon.green {
+  background: #dcfce7;
+}
+.sales-stat-icon.blue {
+  background: #dbeafe;
+}
+.sales-stat-icon.purple {
+  background: #f3e8ff;
+}
+.sales-stat-icon.orange {
+  background: #fff7ed;
+}
+
+.sales-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.sales-stat-sub {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ── FILTERS BAR ── */
+.sales-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-icon {
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+.search-input {
+  border: none !important;
+  outline: none !important;
+  font-size: 14px;
+  flex: 1;
+  background: transparent;
+}
+
+.filter-divider {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+}
+
+/* Period filter buttons */
+.period-filters {
+  display: flex;
+  gap: 6px;
+}
+
+.period-btn {
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.period-btn:hover {
+  background: #f1f5f9;
+}
+
+.period-btn.active {
+  background: #16a34a;
+  /* green = sales/money coming in */
+  color: #ffffff;
+  border-color: #16a34a;
+}
+
+/* ── SALES TABLE ── */
+.sales-table-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sales-table thead tr {
+  background: #f8fafc;
+}
+
+.sales-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Regular sale row */
+.sale-row {
+  cursor: pointer;
+
+  transition: background 0.15s;
+}
+
+.sale-row:hover {
+  background: #f8fafc;
+}
+
+/* Expanded sale row (when clicked) */
+.sale-row.expanded {
+  background: #eff6ff;
+}
+
+.sales-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Sale number (#5) */
+.sale-number {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* Cashier name */
+.cashier-name {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Time ago text */
+.sale-time {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Items count badge */
+.items-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Sale total amount */
+.sale-total {
+  font-weight: 700;
+  color: #16a34a;
+
+  font-size: 15px;
+}
+
+/* Expand/collapse arrow button */
+.expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #64748b;
+  transition: transform 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+}
+
+.expand-btn:hover {
+  background: #f1f5f9;
+}
+
+/* Rotated arrow when expanded */
+.expand-btn.open {
+  transform: rotate(180deg);
+
+  color: #2563eb;
+}
+
+/* ── EXPANDED ROW — items detail ── */
+.expanded-row td {
+  padding: 0 !important;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* Container for expanded content */
+.expanded-content {
+  padding: 16px 24px;
+  background: #f8fafc;
+}
+
+/* Title inside expanded row */
+.expanded-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* Grid for expanded items */
+.expanded-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Each item line */
+.expanded-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Product name */
+.expanded-item-name {
+  flex: 1;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Quantity × price */
+.expanded-item-qty {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* Item subtotal */
+.expanded-item-total {
+  font-weight: 700;
+  color: #1e293b;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Cost price (shown smaller) */
+.expanded-item-cost {
+  font-size: 11px;
+  color: #94a3b8;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Expanded total row */
+.expanded-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  margin-top: 8px;
+  border-top: 2px solid #e2e8f0;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.expanded-total-label {
+  color: #1e293b;
+}
+
+.expanded-total-amount {
+  color: #16a34a;
+  font-size: 16px;
+}
+
+/* Profit shown in expanded row */
+.expanded-profit {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.expanded-profit-amount {
+  font-weight: 600;
+  color: #16a34a;
+}
+
+/* Empty state */
+.table-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+}
+
+.table-empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  font-size: 16px;
+  color: #64748b;
+} /* ─────────────────────────────────────
+   SALES HISTORY PAGE
+───────────────────────────────────── */
+
+.sales-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── TOP BAR ── */
+.sales-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* ── STAT CARDS ── */
+.sales-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.sales-stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.sales-stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.sales-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales-stat-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.sales-stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* Different colors for each card */
+.sales-stat-icon.green {
+  background: #dcfce7;
+}
+.sales-stat-icon.blue {
+  background: #dbeafe;
+}
+.sales-stat-icon.purple {
+  background: #f3e8ff;
+}
+.sales-stat-icon.orange {
+  background: #fff7ed;
+}
+
+.sales-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.sales-stat-sub {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ── FILTERS BAR ── */
+.sales-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-icon {
+  font-size: 16px;
+  color: #94a3b8;
+}
+
+.search-input {
+  border: none !important;
+  outline: none !important;
+  font-size: 14px;
+  flex: 1;
+  background: transparent;
+}
+
+.filter-divider {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+}
+
+/* Period filter buttons */
+.period-filters {
+  display: flex;
+  gap: 6px;
+}
+
+.period-btn {
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.period-btn:hover {
+  background: #f1f5f9;
+}
+
+.period-btn.active {
+  background: #16a34a;
+
+  color: #ffffff;
+  border-color: #16a34a;
+}
+
+/* ── SALES TABLE ── */
+.sales-table-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sales-table thead tr {
+  background: #f8fafc;
+}
+
+.sales-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Regular sale row */
+.sale-row {
+  cursor: pointer;
+
+  transition: background 0.15s;
+}
+
+.sale-row:hover {
+  background: #f8fafc;
+}
+
+/* Expanded sale row (when clicked) */
+.sale-row.expanded {
+  background: #eff6ff;
+}
+
+.sales-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Sale number (#5) */
+.sale-number {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+/* Cashier name */
+.cashier-name {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Time ago text */
+.sale-time {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Items count badge */
+.items-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Sale total amount */
+.sale-total {
+  font-weight: 700;
+  color: #16a34a;
+
+  font-size: 15px;
+}
+
+/* Expand/collapse arrow button */
+.expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #64748b;
+  transition: transform 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+}
+
+.expand-btn:hover {
+  background: #f1f5f9;
+}
+
+/* Rotated arrow when expanded */
+.expand-btn.open {
+  transform: rotate(180deg);
+
+  color: #2563eb;
+}
+
+/* ── EXPANDED ROW — items detail ── */
+.expanded-row td {
+  padding: 0 !important;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* Container for expanded content */
+.expanded-content {
+  padding: 16px 24px;
+  background: #f8fafc;
+}
+
+/* Title inside expanded row */
+.expanded-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* Grid for expanded items */
+.expanded-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Each item line */
+.expanded-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Product name */
+.expanded-item-name {
+  flex: 1;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Quantity × price */
+.expanded-item-qty {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* Item subtotal */
+.expanded-item-total {
+  font-weight: 700;
+  color: #1e293b;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Cost price (shown smaller) */
+.expanded-item-cost {
+  font-size: 11px;
+  color: #94a3b8;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Expanded total row */
+.expanded-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  margin-top: 8px;
+  border-top: 2px solid #e2e8f0;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.expanded-total-label {
+  color: #1e293b;
+}
+
+.expanded-total-amount {
+  color: #16a34a;
+  font-size: 16px;
+}
+
+/* Profit shown in expanded row */
+.expanded-profit {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.expanded-profit-amount {
+  font-weight: 600;
+  color: #16a34a;
+}
+
+/* Empty state */
+.table-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+}
+
+.table-empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  font-size: 16px;
+  color: #64748b;
+}

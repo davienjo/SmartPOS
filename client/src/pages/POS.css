@@ -1,0 +1,612 @@
+/* ─────────────────────────────────────
+   MAIN POS LAYOUT
+   Two columns side by side
+───────────────────────────────────── */
+.pos {
+  display: flex;
+  gap: 16px;
+
+  height: calc(100vh - 112px);
+}
+
+/* ─────────────────────────────────────
+   LEFT SIDE — PRODUCTS PANEL
+───────────────────────────────────── */
+
+/* The whole left panel */
+.pos-left {
+  flex: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* ── SEARCH BAR ── */
+.pos-search {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.pos-search-icon {
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+.pos-search input {
+  border: none;
+
+  outline: none;
+
+  font-size: 15px;
+  flex: 1;
+
+  background: transparent;
+}
+
+/* ── CATEGORY FILTER BUTTONS ── */
+.pos-categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Each category pill button */
+.category-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 13px;
+  cursor: pointer;
+
+  transition: all 0.2s;
+
+  white-space: nowrap;
+}
+
+.category-btn:hover {
+  background: #f1f5f9;
+}
+
+/* Selected/active category */
+.category-btn.active {
+  background: #2563eb;
+
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+/* ── PRODUCTS GRID ── */
+.pos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+  overflow-y: auto;
+
+  padding-bottom: 8px;
+
+  flex: 1;
+}
+
+/* Each product card/button */
+.product-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  border: 2px solid transparent;
+
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Blue border appears on hover */
+.product-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Out of stock cards look faded */
+.product-card.out-of-stock {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+/* Product name text */
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Category text below name */
+.product-category {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+/* Price text */
+.product-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-top: 6px;
+}
+
+/* Stock count text */
+.product-stock {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Stock text turns orange when low */
+.product-stock.low {
+  color: #ea580c;
+}
+
+/* When no products match search */
+.pos-no-results {
+  grid-column: 1 / -1;
+
+  text-align: center;
+  padding: 40px;
+  color: #94a3b8;
+}
+
+/* ─────────────────────────────────────
+   RIGHT SIDE — CART PANEL
+───────────────────────────────────── */
+.pos-cart {
+  flex: 1;
+
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-width: 280px;
+}
+
+/* ── CART HEADER ── */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 12px;
+}
+
+.cart-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Item count badge (e.g. "5 items") */
+.cart-count {
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* ── CART ITEMS LIST ── */
+.cart-items {
+  flex: 1;
+
+  overflow-y: auto;
+}
+
+/* Empty cart message */
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #94a3b8;
+  gap: 8px;
+}
+
+.cart-empty-icon {
+  font-size: 48px;
+}
+
+.cart-empty-text {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cart-empty-sub {
+  font-size: 12px;
+}
+
+/* Each item row in cart */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+/* Remove border from last item */
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+/* Item details (name + price per unit) */
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.cart-item-unit-price {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Quantity controls (minus, number, plus) */
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* The - and + buttons */
+.qty-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+
+  background: #f1f5f9;
+  border: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #1e293b;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.qty-btn:hover {
+  background: #e2e8f0;
+}
+
+/* The number between - and + */
+.qty-value {
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 20px;
+
+  text-align: center;
+}
+
+/* Item total (price × quantity) */
+.cart-item-subtotal {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  min-width: 65px;
+  text-align: right;
+}
+
+/* Delete item button */
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #dc2626;
+
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.cart-item-remove:hover {
+  background: #fee2e2;
+}
+
+/* ── CART FOOTER ── */
+.cart-footer {
+  border-top: 2px solid #f1f5f9;
+  padding-top: 16px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Total row */
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-total-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.cart-total-amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Green PAY button */
+.btn-pay {
+  width: 100%;
+  padding: 14px;
+  background: #16a34a;
+
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-pay:hover {
+  background: #15803d;
+}
+
+/* Disabled pay button (empty cart or loading) */
+.btn-pay:disabled {
+  background: #86efac;
+
+  cursor: not-allowed;
+}
+
+/* Red CLEAR button */
+.btn-clear {
+  width: 100%;
+  padding: 10px;
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-clear:hover {
+  background: #fecaca;
+}
+
+/* ─────────────────────────────────────
+   RECEIPT MODAL
+   The popup that shows after payment
+───────────────────────────────────── */
+
+/* Dark overlay covering the whole screen */
+.modal-overlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* The white receipt box */
+.receipt-modal {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 380px;
+  max-height: 85vh;
+
+  overflow-y: auto;
+
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Success checkmark at top */
+.receipt-success {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.receipt-check {
+  font-size: 48px;
+}
+
+.receipt-success h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #16a34a;
+
+  margin-top: 8px;
+}
+
+/* Shop name */
+.receipt-shop {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+/* Receipt number and date */
+.receipt-meta {
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+/* Each item line on receipt */
+.receipt-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.receipt-line-name {
+  color: #374151;
+  flex: 1;
+}
+
+.receipt-line-qty {
+  color: #94a3b8;
+  margin: 0 12px;
+}
+
+.receipt-line-amount {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Total line */
+.receipt-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  border-top: 2px solid #1e293b;
+
+  margin-top: 8px;
+}
+
+/* Cashier info */
+.receipt-cashier {
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 12px 0;
+}
+
+/* Thank you message */
+.receipt-thanks {
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+  padding: 12px 0 20px;
+  border-top: 1px dashed #e2e8f0;
+  margin-top: 8px;
+}
+
+/* Close/New Sale button */
+.btn-new-sale {
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-new-sale:hover {
+  background: #1d4ed8;
+}
+
+/* ─────────────────────────────────────
+   LOADING STATE
+───────────────────────────────────── */
+.pos-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* ─────────────────────────────────────
+   PRINT STYLES — Receipt Only
+  
+───────────────────────────────────── */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  
+  .receipt-printable,
+  .receipt-printable * {
+    visibility: visible;
+  }
+
+  .receipt-printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .modal-overlay {
+    background: none !important;
+    position: static !important;
+  }
+
+  .btn-new-sale,
+  .btn-print-receipt {
+    display: none !important;
+  }
+
+  .receipt-modal {
+    max-width: 280px !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    border: none !important;
+  }
+}

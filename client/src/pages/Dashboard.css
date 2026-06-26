@@ -1,0 +1,307 @@
+/* ─────────────────────────────────────
+   MAIN DASHBOARD
+───────────────────────────────────── */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.dashboard-date {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Date filter buttons */
+.date-filters {
+  display: flex;
+  gap: 8px;
+}
+
+.date-filter-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.date-filter-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+/* ─────────────────────────────────────
+   TRADING ACCOUNT SECTION
+   (The CPA style box)
+───────────────────────────────────── */
+.trading-account {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Two columns layout for trading account */
+.trading-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Each column */
+.trading-col h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+/* Each row in the trading account */
+.trading-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #f8fafc;
+}
+
+/* Label on the left */
+.trading-row-label {
+  color: #374151;
+}
+
+/* Amount on the right */
+.trading-row-amount {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Negative amounts (deductions) in red */
+.trading-row-amount.negative {
+  color: #dc2626;
+}
+
+/* Positive amounts in green */
+.trading-row-amount.positive {
+  color: #16a34a;
+}
+
+/* Subtotal rows (slightly different style) */
+.trading-row.subtotal {
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 2px solid #e2e8f0;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* The GROSS PROFIT row */
+.trading-row.gross-profit {
+  background: #eff6ff;
+  padding: 10px 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* The NET PROFIT row */
+.trading-row.net-profit {
+  background: #f0fdf4;
+  padding: 12px 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid #16a34a;
+}
+
+.trading-row.net-profit .trading-row-amount {
+  color: #16a34a;
+  font-size: 18px;
+}
+
+/* Net loss style */
+.trading-row.net-loss {
+  background: #fff1f2;
+  padding: 12px 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid #dc2626;
+}
+
+/* ─────────────────────────────────────
+   QUICK STATS CARDS
+───────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.stat-icon.blue   { background: #dbeafe; }
+.stat-icon.green  { background: #dcfce7; }
+.stat-icon.red    { background: #fee2e2; }
+.stat-icon.purple { background: #f3e8ff; }
+.stat-icon.orange { background: #fff7ed; }
+.stat-icon.teal   { background: #ccfbf1; }
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.stat-sub {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ─────────────────────────────────────
+   BOTTOM SECTIONS
+───────────────────────────────────── */
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Low stock items */
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.stock-item:last-child { border-bottom: none; }
+.stock-name { font-size: 14px; font-weight: 500; color: #333; }
+.stock-category { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+.stock-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stock-badge.critical { background: #fee2e2; color: #dc2626; }
+.stock-badge.low { background: #fff7ed; color: #ea580c; }
+
+/* Recent sales */
+.sale-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sale-item:last-child { border-bottom: none; }
+.sale-number { font-size: 14px; font-weight: 600; color: #1e293b; }
+.sale-meta { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+.sale-total { font-size: 14px; font-weight: 700; color: #16a34a; }
+
+.empty-state {
+  text-align: center;
+  padding: 24px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 16px;
+  color: #64748b;
+}

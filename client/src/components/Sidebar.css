@@ -1,0 +1,108 @@
+/* The whole sidebar container */
+.sidebar {
+  width: var(--sidebar-width);   
+  background: #1e293b;          
+  height: 100vh;                
+  position: fixed;              
+  left: 0;                     
+  top: 0;                        
+  display: flex;
+  flex-direction: column;        
+  padding: 20px 0;
+  overflow: hidden;
+ 
+}
+
+/* Logo section at the top */
+.sidebar-logo {
+  padding: 0 20px 30px;
+  border-bottom: 1px solid #334155;  
+  flex-shrink: 0;
+  
+}
+
+/* SmartPOS title */
+.sidebar-logo h1 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* "Point of Sale System" subtitle */
+.sidebar-logo p {
+  color: #94a3b8;   
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Navigation links container */
+.sidebar-nav {
+  flex: 1;        
+  padding: 20px 0;
+  overflow-y: auto;
+  min-height: 0;
+  
+}
+
+/* Thin, subtle scrollbar for the nav area */
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+/* Each navigation link */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;            
+  padding: 12px 20px;
+  color: #94a3b8;       
+  text-decoration: none; 
+  font-size: 15px;
+  transition: all 0.2s;  
+  margin-bottom: 4px;
+}
+
+/* When you hover over a link */
+.sidebar-link:hover {
+  color: #ffffff;
+  background: #334155;
+}
+
+/* When this link is the current page */
+.sidebar-link.active {
+  color: #ffffff;        
+  background: #2563eb;  
+}
+
+/* Bottom section with logout */
+.sidebar-bottom {
+  padding: 20px;
+  border-top: 1px solid #334155;
+  flex-shrink: 0;
+ 
+}
+
+/* Logout button */
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Hover on logout */
+.sidebar-logout:hover {
+  color: #ffffff;
+}

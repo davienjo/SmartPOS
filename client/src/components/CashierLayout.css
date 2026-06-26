@@ -1,0 +1,128 @@
+/* ─────────────────────────────────────
+   CASHIER LAYOUT
+   Simple layout for cashiers
+   Just a top bar, no sidebar
+───────────────────────────────────── */
+
+.cashier-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f0f2f5;
+}
+
+/* Top navigation bar */
+.cashier-header {
+  background: #1e293b;
+  
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Shop name on the left */
+.cashier-header-left {
+  flex: 1;
+}
+
+.cashier-shop-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Nav links in the center */
+.cashier-nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.cashier-nav-link {
+  padding: 8px 20px;
+  border-radius: 8px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cashier-nav-link:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+.cashier-nav-link.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* User info + logout on the right */
+.cashier-header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cashier-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Avatar circle */
+.cashier-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.cashier-name {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cashier-role {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* Logout button */
+.cashier-logout {
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid #475569;
+  color: #94a3b8;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cashier-logout:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+/* Main content area */
+.cashier-main {
+  flex: 1;
+  padding: 20px;
+  
+}
